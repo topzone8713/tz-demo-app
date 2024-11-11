@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-2">
+      <header>
+        <h2>ChatGPT Demo App</h2>
+      </header>
+      <form id="myForm">
+          <div class="form-group row">
+            <select id="isChat" name="isChat" class="form-control col-lg-1">
+                <option value="chat">Chat</option>
+                <option value="">Query</option>
+            </select>
+            <div class="col-lg-9">
+              <input id="prompt" name="prompt" type="text" class="form-control" value=" 챗GPT에 대해서 설명해줘." required>
+            </div>
+            <div class="col-lg-2">
+              <button type="submit" class="btn btn-primary once">Submit</button>
+            </div>
+          </div>
+          <div class="form-group row">
+              <textarea id="detail" name="detail" rows="10" class="form-control noresize"></textarea>
+          </div>
+      </form>
+      <footer>
+        <p><a href="https://platform.openai.com/docs/models/gpt-4" target="_target">References</a></p>
+        <div class="form-group row">
+            <div class="col-lg-9">
+              <textarea rows="9" class="form-control noresize">
+curl https://api.openai.com/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-3.5-turbo-0301",
+        "max_tokens": 1000,
+        "messages": [{"role": "user", "content": " 챗GPT에 대해서 설명해줘."}]
+    }'
+              </textarea>
+            </div>
+            <div class="col-lg-9">
+              <textarea rows="11" class="form-control noresize">
+curl https://api.openai.com/v1/chat/completions \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-3.5-turbo-0301",
+        "max_tokens": 1000,
+        "temperature": 0.5, "max_tokens": 2048, "stream": true,
+        "messages": [{"role": "user", "content": " 챗GPT에 대해서 설명해줘."}]
+    }'
+              </textarea>
+            </div>
+
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#myForm").submit(function (e1) {
+            $('#detail').text('');
+            $.ajax({
+                url: "/gpt",
+                type: "POST",
+                data: $('#myForm').serialize(),
+                dataType: "json",
+                timeout: 200000,
+                success: function(e){
+                    console.log(e);
+                    $('#detail').text(e.message);
+                },
+                error: function(e){
+                    console.log(e);
+                    $('#detail').text(e.responseText);
+                },
+            });
+            e1.preventDefault();
+        });
+    });
+
+</script>

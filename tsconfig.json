@@ -1,0 +1,17 @@
+{
+  "include": ["src/**/*.ts", "env/*.env"],
+  "exclude": ["node_modules", "upload"],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "./src/",
+    "outDir": "./build",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
