@@ -38,8 +38,8 @@ app.post('/gpt', function (req, res) {
 
         let params = {
             messages: messages,
-            model: 'gpt-3.5-turbo',
-            // model: process.env.MODEL_ID,
+            // model: 'gpt-3.5-turbo',
+            model: process.env.MODEL_ID,
             max_tokens: 2048,
             temperature: 0,
         }
