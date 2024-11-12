@@ -19,10 +19,10 @@ pipeline {
         USE_ARGOCD = "true"
 
         // AWS and Kubernetes Configuration
-        ACCOUNT_ID = "336363860990"
+        ACCOUNT_ID = "596627550572"
         AWS_DEFAULT_REGION = "ap-northeast-2"
-        DOMAIN = "seerslab.io"
-        CLUSTER_NAME = "eks-main-t"
+        DOMAIN = "topzone.me"
+        CLUSTER_NAME = "topzone-k8s"
         CERTIFICATE="aaaaaa"
 
         KUBECTL = "kubectl -n ${NAMESPACE} --kubeconfig /var/lib/jenkins/.kube/sl_${CLUSTER_NAME}"
@@ -31,7 +31,7 @@ pipeline {
 
         GIT_CREDENTIAL = 'github-token'
         GITHUP_TOKEN = credentials('GITHUP_TOKEN')
-        VAULT_TOKEN = credentials('vault-token')
+        VAULT_TOKEN = credentials('vault_token')
         ARGOCD_ID = "admin"
         ARGOCD_PASSWORD = credentials('argocd_password')
 
