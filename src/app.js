@@ -88,7 +88,6 @@ app.post('/gpt', function (req, res) {
     }
 
     getGPT3Response(prompt).then(response => {
-      console.log(response);
       res.status(200).send(response);
     }).catch(error => {
       console.error(error);
