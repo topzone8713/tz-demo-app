@@ -176,12 +176,8 @@ if [[ "${STAGING}" == "prod" || "${STAGING}" == "staging" || "${STAGING}" == "qa
   NAMESPACE=${NAMESPACE/-prod/}
   PROJECT=${NAMESPACE}
 else
-  if [[ $NAMESPACE != *-dev ]]; then
-    NAMESPACE=${NAMESPACE}"-dev"
-  else
-    NAMESPACE=${NAMESPACE}
-  fi
-  PROJECT=${NAMESPACE/-dev/}
+  NAMESPACE=${NAMESPACE}"-dev"
+  PROJECT=${NAMESPACE}"-dev"
 fi
 KUBECTL="kubectl -n ${NAMESPACE} --kubeconfig ${WORKSPACE}/resources/kubeconfig_eks-main"
 echo "================================================"
