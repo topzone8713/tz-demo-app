@@ -95,6 +95,10 @@ app.post('/gpt', function (req, res) {
     });
 })
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK', timestamp: new Date() });
+})
+
 app.listen(3000)
 console.log('Server started at http://localhost:' + 3000)
 

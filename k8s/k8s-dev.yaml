@@ -22,17 +22,17 @@ spec:
       - name: tz-demo-app-${GIT_BRANCH}
         image: ${REPOSITORY_TAG}
         imagePullPolicy: Always
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3001
+#        readinessProbe:
+#          httpGet:
+#            path: /health
+#            port: 3001
         resources:
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 50m
+            memory: 50Mi
           limits:
-            cpu: 1000m
-            memory: 1000Mi
+            cpu: 100m
+            memory: 100Mi
         envFrom:
         - configMapRef:
             name: tz-demo-app-configmap
