@@ -54,11 +54,11 @@ spec:
     image: topzone8713/devops-utils2:latest
     resources:
       requests:
-        memory: 500Mi
-        cpu: "500m"
+        memory: 200Mi
+        cpu: "200m"
       limits:
         memory: 1Gi
-        cpu: "1000m"
+        cpu: "300m"
     tty: true
     command: ["sleep"]
     args: ["99d"]
@@ -71,11 +71,11 @@ spec:
     imagePullPolicy: Always
     resources:
       requests:
-        memory: 500Mi
-        cpu: "500m"
+        memory: 200Mi
+        cpu: "200m"
       limits:
-        memory: 2Gi
-        cpu: "2000m"
+        memory: 1Gi
+        cpu: "300m"
     env:
       - name: AWS_SDK_LOAD_CONFIG
         value: "true"
